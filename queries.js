@@ -56,7 +56,6 @@ const deleteCurriculo = (request, response) => {
 
 module.exports = {
   getCurriculo,
-  getCurriculoById,
   createCurriculo,
   updateCurriculo,
   deleteCurriculo,

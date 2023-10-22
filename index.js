@@ -20,7 +20,6 @@ app.listen(port, () => {
 })
 
 app.get('/curriculo', db.getCurriculo)
-app.get('/curriculo/:id', db.getCurriculoById)
 app.post('/curriculo', db.createCurriculo)
 app.put('/curriculo/:id', db.updateCurriculo)
 app.delete('/curriculo/:id', db.deleteCurriculo)
