@@ -28,6 +28,17 @@ const createCurriculo = (request, response) => {
   });
 };
 
+const getCurriculoById = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('SELECT * FROM curriculo WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+};
+
 const updateCurriculo = (request, response) => {
   const id = parseInt(request.params.id);
   const { nome, email, contato, formacao, experiencia } = request.body;
@@ -58,6 +69,14 @@ const deleteCurriculo = (request, response) => {
 module.exports = {
   getCurriculo,
   createCurriculo,
+  getCurriculoById, 
   updateCurriculo,
   deleteCurriculo,
 };
+
+const db = require('./queries')
+app.get('/users', db.getCurriculo)
+app.get('/users/:id', db.getCurriculoById)
+app.post('/users', db.createCurriculo)
+app.put('/users/:id', db.updateCurriculo)
+app.delete('/users/:id', db.deleteCurriculo)
