@@ -2,10 +2,10 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'aws-0-sa-east-1.pooler.supabase.com',
+  host: 'db.lrvvnkuhmbopdhsmepap.supabase.co',
   database: 'postgres',
-  password: 'lAyrtonSennaDaSilva@2003',
-  port: 6543,
+  password: 'AyrtonSenna@2003',
+  port: 5432,
 });
 
 const getCurriculo = (request, response) => {

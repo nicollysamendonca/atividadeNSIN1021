@@ -5,7 +5,7 @@ const pool = new Pool({
   host: 'db.lrvvnkuhmbopdhsmepap.supabase.co',
   database: 'postgres',
   password: 'AyrtonSenna@2003',
-  port: 6543,
+  port: 5432,
 });
 
 const getCurriculo = (request, response) => {
