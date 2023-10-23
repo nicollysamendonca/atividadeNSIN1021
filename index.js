@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'aws-0-sa-east-1.pooler.supabase.com',
+  host: 'db.lrvvnkuhmbopdhsmepap.supabase.co',
   database: 'postgres',
   password: 'AyrtonSenna@2003',
   port: 6543,
@@ -20,7 +20,7 @@ const getCurriculo = (request, response) => {
 const createCurriculo = (request, response) => {
   const { nome, email, telefone, cursos, formacao, endereco, outrosContatos } = request.body;
 
-  pool.query('INSERT INTO curriculo (nome, email, telefone, cursos, formacao, endereco, outrosContatos) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [nome, email, telefone, cursos, formacao, endereco, outrosContatos], (error, results) => {
+  pool.query('INSERT INTO curriculo (nome, email, contato, formacao, experiencia) VALUES ($1, $2, $3, $4, $5) RETURNING *', [nome, email, contato, formacao, experiencia], (error, results) => {
     if (error) {
       throw error;
     }
@@ -30,11 +30,11 @@ const createCurriculo = (request, response) => {
 
 const updateCurriculo = (request, response) => {
   const id = parseInt(request.params.id);
-  const { nome, email, telefone, cursos, formacao, endereco, outrosContatos } = request.body;
+  const { nome, email, contato, formacao, experiencia } = request.body;
 
   pool.query(
-    'UPDATE curriculo SET nome = $1, email = $2, telefone = $3, cursos = $4, formacao = $5, endereco = $6, outrosContatos = $7 WHERE id = $8',
-    [nome, email, telefone, cursos, formacao, endereco, outrosContatos, id],
+    'UPDATE curriculo SET nome = $1, email = $2, contato = $3, formacao = $4, experiencia = $5 WHERE id = $6',
+    [nome, email, contato, formacao, experiencia, id],
     (error, results) => {
       if (error) {
         throw error;
