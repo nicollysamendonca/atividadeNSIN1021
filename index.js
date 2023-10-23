@@ -20,7 +20,7 @@ const getCurriculo = (request, response) => {
 };
 
 const createCurriculo = (request, response) => {
-  const { nome, email, telefone, cursos, formacao, endereco, outrosContatos } = request.body;
+  const { nome, email, contato, formacao, experiencia } = request.body;
 
   pool.query('INSERT INTO curriculo (nome, email, contato, formacao, experiencia) VALUES ($1, $2, $3, $4, $5) RETURNING *', [nome, email, contato, formacao, experiencia], (error, results) => {
     if (error) {
@@ -76,7 +76,7 @@ module.exports = {
   deleteCurriculo,
 };
 
-const db = require('./queries')
+const db = require('../queries')
 app.get('/users', db.getCurriculo)
 app.get('/users/:id', db.getCurriculoById)
 app.post('/users', db.createCurriculo)
