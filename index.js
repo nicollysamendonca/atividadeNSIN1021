@@ -2,6 +2,13 @@ const { Pool } = require('pg');
 const express = require('express');
 const app = express();
 
+app.get('/', (request, response) => {
+  response.send('Bem-vindo à página inicial!'); // Mensagem da página inicial
+});
+
+// Importe o módulo queries
+const db = require('./queries');
+
 const pool = new Pool({
   user: 'postgres',
   host: 'db.lrvvnkuhmbopdhsmepap.supabase.co',
@@ -76,9 +83,12 @@ module.exports = {
   deleteCurriculo,
 };
 
-const db = require('../queries')
 app.get('/users', db.getCurriculo)
 app.get('/users/:id', db.getCurriculoById)
 app.post('/users', db.createCurriculo)
 app.put('/users/:id', db.updateCurriculo)
 app.delete('/users/:id', db.deleteCurriculo)
+
+app.listen(3000, () => {
+  console.log('Servidor Express rodando na porta 3000');
+});
