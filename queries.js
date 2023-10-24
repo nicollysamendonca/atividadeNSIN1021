@@ -74,4 +74,4 @@ module.exports = {
   getCurriculoById,
   updateCurriculo,
   deleteCurriculo,
-};
+}; 

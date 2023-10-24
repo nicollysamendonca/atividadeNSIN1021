@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 const express = require('express');
-const app = express();
+const app = express(); 
 
 app.get('/', (request, response) => {
   response.send('Bem-vindo à página inicial!'); // Mensagem da página inicial
